@@ -33,7 +33,7 @@ export default function OnboardingPage() {
         .from('profiles')
         .select('onboarding_completed')
         .eq('id', user.id)
-        .single()
+        .single() as any
 
       if (profile?.onboarding_completed) {
         router.push('/dashboard')
@@ -66,8 +66,7 @@ export default function OnboardingPage() {
       updateData.country = country
     }
 
-    const { error } = await supabase
-      .from('profiles')
+    const { error } = await (supabase.from('profiles') as any)
       .update(updateData)
       .eq('id', user.id)
 

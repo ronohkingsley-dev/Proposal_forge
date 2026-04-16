@@ -34,7 +34,7 @@ export default function BrandingSettingsPage() {
         .from('profiles')
         .select('subscription_tier, branding')
         .eq('id', user.id)
-        .single()
+        .single() as any
 
       if (profile?.subscription_tier !== 'agency') {
         router.push('/settings') // Only agency can view

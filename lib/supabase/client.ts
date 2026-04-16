@@ -1,12 +1,11 @@
 import { createBrowserClient } from '@supabase/ssr'
 import { Database } from './types' // Assuming types are generated
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 /**
  * Creates a singleton-like browser client for Supabase in Next.js.
- * This is the standard way to interact with Supabase from Client Components.
  */
 export const supabase = createBrowserClient<Database>(
   supabaseUrl,

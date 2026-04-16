@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { 
   ArrowLeft, 
@@ -13,7 +13,6 @@ import {
   Zap,
   DollarSign,
   Save,
-  Users,
   FolderArchive
 } from 'lucide-react'
 import { supabase } from '@/lib/supabase/client'
@@ -36,7 +35,7 @@ interface FormData {
   requireDeposit: boolean
 }
 
-export default function NewProposalPage() {
+function NewProposalContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const prefillClientId = searchParams.get('clientId')
@@ -200,7 +199,7 @@ export default function NewProposalPage() {
   ]
 
   return (
-    <div className="max-w-3xl mx-auto py-12 px-6 min-h-screen font-sans animate-fade-in">
+    <div className="max-w-3xl mx-auto py-12 px-6 min-h-screen font-sans animate-fade-in text-white">
       <header className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
         <div className="space-y-1">
           <button 
@@ -469,5 +468,17 @@ export default function NewProposalPage() {
          </div>
       )}
     </div>
+  )
+}
+
+export default function NewProposalPage() {
+  return (
+    <Suspense fallback={
+       <div className="min-h-screen flex items-center justify-center bg-slate-950">
+          <div className="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+       </div>
+    }>
+       <NewProposalContent />
+    </Suspense>
   )
 }

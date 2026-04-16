@@ -15,7 +15,8 @@ import {
   TrendingUp,
   BarChart3,
   Zap,
-  ArrowRight
+  ArrowRight,
+  Bell
 } from 'lucide-react'
 import { 
   BarChart, 
@@ -80,7 +81,8 @@ export default function DashboardPage() {
           supabase.from('proposals').select('*').eq('user_id', user.id).order('created_at', { ascending: false })
         ])
 
-        if (profileRes.data && profileRes.data.onboarding_completed === false) {
+        const { data: profile, error: profileError } = profileRes as any
+        if (profile && profile.onboarding_completed === false) {
           router.push('/onboarding')
           return
         }

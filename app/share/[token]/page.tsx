@@ -27,7 +27,7 @@ export default function ProposalViewPage() {
         .from('proposals')
         .select('*, profiles(branding, full_name)')
         .eq('share_token', params.token)
-        .single()
+        .single() as any
       
       if (data) {
         setProposal(data)

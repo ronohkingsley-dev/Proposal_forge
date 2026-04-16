@@ -2,9 +2,9 @@ import { Resend } from 'resend'
 import { createClient } from '@supabase/supabase-js'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
 
 export async function sendFreelancerNotification(userId: string, type: 'proposal_viewed' | 'deposit_received' | 'expiration_warning', proposalData: any) {
+  const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!)
   try {
     // 1. Fetch user's email and notification settings
     const { data: userAuth, error: userError } = await supabase.auth.admin.getUserById(userId)
