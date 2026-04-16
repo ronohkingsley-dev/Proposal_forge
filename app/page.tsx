@@ -138,8 +138,8 @@ export default function LandingPage() {
       <footer className="max-w-7xl mx-auto px-6 pt-20 border-t border-white/10 mt-20 flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-slate-400 font-medium">© {new Date().getFullYear()} ProposalForge. All rights reserved.</p>
         <div className="flex gap-8 font-semibold text-slate-400">
-          <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-          <Link href="#" className="hover:text-white transition-colors">Terms</Link>
+          <Link href="/privacy" className="hover:text-white transition-colors underline-offset-4 hover:underline">Privacy</Link>
+          <Link href="/terms" className="hover:text-white transition-colors underline-offset-4 hover:underline">Terms</Link>
           <Link href="#" className="hover:text-white transition-colors">Twitter</Link>
         </div>
       </footer>
